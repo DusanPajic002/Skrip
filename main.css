@@ -1,10 +1,19 @@
 body {
-    background-color: #fefeec;
+    background-color: orange;
 }
 
 main.container {
     background-color: white;
-    box-shadow: 0px 0px 12px black;
-    border: 1px solid black;
+    box-shadow: 0px 0px 12px white;
+    border: 1px solid white;
     margin-top: 15px;
+
+}
+
+.error {
+    border-color: red;
+}
+
+.success {
+    border-color: green;
 }
