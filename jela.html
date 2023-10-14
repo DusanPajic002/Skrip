@@ -12,7 +12,7 @@
 
 <body>
     <main class="container">
-        <div class="row">
+        <div class="row" id="glavniRow">
             <!-- Grey with black text -->
             <nav class="navbar navbar-expand-sm bg-light navbar-light">
                 <div class="container-fluid">
@@ -32,18 +32,14 @@
                     </ul>
                 </div>
             </nav>
-
-            <!-- Black background with white text -->
-            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">...</nav>
-
-            <!-- Blue background with white text -->
-            <nav class="navbar navbar-expand-sm bg-primary navbar-dark">...</nav>
+            <nav class="navbar navbar-expand-sm bg-danger navbar-dark">  </nav>
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark">  </nav>
+            <nav class="navbar navbar-expand-sm bg-white navbar-dark">  </nav>
         </div>
         <h1> Dobrodošli na jela</h1>
-        <a href="novo-jelo.html" class="btn btn-dark float-end">Novo jelo</a>
-        <p>Mozete da dodate novo jelo --- ></p>
+        <a href="novo-jelo.html" class="btn btn-dark" id= "novojelodugme">NOVO JELO</a>
     
-        <table class="table">
+        <table class="table" id="tabele">
             <thead>
               <tr>
                 <th>Kategorija</th>
@@ -57,18 +53,27 @@
                 <td>Pizza</td>
                 <td>Kapricoza 22</td>
                 <td>750</td>
-                <td><button class="btn btn-primary" onclick=""><a href="index.html" class="btn btn-primary">Izmeni</a></button></tr>
+                <td>
+                  <button class="btn btn-primary" onclick="">Promena cene</button>
+                  <a href="jelo.html" class="btn btn-dark" onclick="">Izmeni</a>
+                </tr>
               <tr>
                 <td>Pizza</td>
                 <td>Kapricoza 32</td>
                 <td>1000</td>
-                <td><button class="btn btn-primary" onclick=""><a href="index.html" class="btn btn-primary">Izmeni</a></button></tr>
+                <td>
+                  <button class="btn btn-primary" onclick="">Promena cene</button>
+                  <a href="jelo.html" class="btn btn-dark" onclick="">Izmeni</a>
+                </tr>
               </tr>
               <tr>
                 <td>Sendvič</td>
                 <td>Prezident</td>
                 <td>99</td>
-                <td><button class="btn btn-primary" onclick=""><a href="index.html" class="btn btn-primary">Izmeni</a></button></tr>
+                <td>
+                  <button class="btn btn-primary" onclick="">Promena cene</button>
+                  <a href="jelo.html" class="btn btn-dark" onclick="">Izmeni</a>
+                </tr>
               </tr>
             </tbody>
           </table>

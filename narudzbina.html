@@ -12,7 +12,7 @@
 
 <body>
     <main class="container">
-        <div class="row">
+        <div class="row" id="glavniRow">
             <!-- Grey with black text -->
             <nav class="navbar navbar-expand-sm bg-light navbar-light">
                 <div class="container-fluid">
@@ -32,13 +32,12 @@
                     </ul>
                 </div>
             </nav>
-
-            <!-- Black background with white text -->
-            <nav class="navbar navbar-expand-sm bg-black navbar-blue"></nav>
+            <nav class="navbar navbar-expand-sm bg-danger navbar-dark">  </nav>
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark">  </nav>
+            <nav class="navbar navbar-expand-sm bg-white navbar-dark">  </nav>  
         </div>
         <h1>Detalji narudžbine</h1>
-        <h2>.</h2> 
-        <form id="froma" method="post" action="http://postman-echo.com/post">
+        <form method="post" action="http://postman-echo.com/post"  id="narudzbinaFroma"  >
             <dl class="row">
                 <dt class="col-sm-3">Zakazano vreme:</dt>
                 <dd class="col-sm-9">5.10.2023 16:15</dd>
@@ -52,8 +51,17 @@
                 </dd>
                 <dt class="col-sm-3">Adresa:</dt>
                 <dd class="col-sm-9">Kralja Milana 12/2</dd>
+                <dd>
+                <select class="form-select" name="kategorija" id="kategorija" onchange="document.getElementById('forma').submit()">
+                    <option value="1">Novo</option> 
+                    <option value="2">Prihvaćeno</option>
+                    <option value="2">Odbijeno</option>
+                    <option value="2">Dostavi</option>
+                    <option value="2">Zavrseno</option>
+                    <option value="2">Takodje</option>
+                </select>
+                </dd>
             </dl>
-              
         </form>
     </main>
 </body>

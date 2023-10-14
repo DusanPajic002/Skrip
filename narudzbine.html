@@ -12,7 +12,7 @@
 
 <body>
     <main class="container">
-        <div class="row">
+        <div class="row" id="glavniRow">
             <!-- Grey with black text -->
             <nav class="navbar navbar-expand-sm bg-light navbar-light">
                 <div class="container-fluid">
@@ -21,10 +21,10 @@
                             <a class="nav-link" href="index.html">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="jela.html">Ponuda</a>
+                            <a class="nav-link" href="jela.html">Ponuda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="narudzbine.html">Narudbžine</a>
+                            <a class="nav-link active" href="narudzbine.html">Narudbžine</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Disabled</a>
@@ -32,17 +32,13 @@
                     </ul>
                 </div>
             </nav>
-
-            <!-- Black background with white text -->
-            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">  </nav>
-
-            <!-- Blue background with white text -->
+            <nav class="navbar navbar-expand-sm bg-danger navbar-dark">  </nav>
             <nav class="navbar navbar-expand-sm bg-primary navbar-dark">  </nav>
+            <nav class="navbar navbar-expand-sm bg-white navbar-dark">  </nav>
         </div>
-        <h1> Lista narudzbina</h1>
-        <a href="novo-jelo.html" class="btn btn-dark float-end">Novo jelo</a>
+        <h1 id=""> Lista narudzbina</h1>
     
-        <table class="table">
+        <table class="table" id="tabele">
             <thead>
               <tr>
                 <th>Zakazano vreme</th>
@@ -64,7 +60,7 @@
                     Pizza Kaprićoza mala x1
                     Sendvić Prezident x1
                 </td>
-                <td><button class="btn btn-primary" onclick=""><a href="narudzbina.html" class="btn btn-primary">Izmeni</a></button> </td>
+                <td><button class="btn btn-primary" onclick=""><a href="narudzbina.html" class="btn btn-primary">Detalji</a></button> </td>
              </tr>
              <tr>
                 <td>5.10.2023 18:30</td>
@@ -75,7 +71,7 @@
                     Pizza Kaprićoza velika x1
                     Sendvić Prezident x1
                 </td>
-                <td><button class="btn btn-primary" onclick=""><a href="narudzbina.html" class="btn btn-primary">Izmeni</a></button> </td>
+                <td><button class="btn btn-primary" onclick=""><a href="narudzbina.html" class="btn btn-primary">Detalji</a></button></td>
              </tr>
             </tbody>
           </table>
