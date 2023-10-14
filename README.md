@@ -1,0 +1,2 @@
+# Skrip
+Projekat iz skripti
