@@ -11,18 +11,20 @@ main.container {
     border: 0px solid black;
     margin-top: 80px;
     width: 3000px;
-    height: 800px;
+    height:1100px;
 }
 #sastojcirow{
     background-color: wheat;
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
+    margin-bottom: 20px;
     text-align: center;
 }
 #narudzbinaFroma{
     background-color: rgba(255, 255, 255, 0.5);
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 6px;
     height: 200px;
 }
@@ -57,4 +59,11 @@ main h1{
 
 .success {
     border-color: green;
+}
+#tabela_narucivanje{
+    text-align: center;
+    width: 100%;
+    border-color: rgb(70, 110, 70);
+    border: 1px solid;
+    margin-bottom: 20px;
 }
