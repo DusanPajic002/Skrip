@@ -11,7 +11,14 @@ main.container {
     border: 0px solid black;
     margin-top: 80px;
     width: 3000px;
-    height: 600px;
+    height: 800px;
+}
+#sastojcirow{
+    background-color: wheat;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
 }
 #narudzbinaFroma{
     background-color: rgba(255, 255, 255, 0.5);
@@ -30,6 +37,10 @@ main h1{
     margin-top:  5px;
     padding: 0px;
     font-size:xx-large;
+}
+#Sosevi{
+ font-size:x-large;
+ font-weight: bold;
 }
 #novojelodugme{
     margin-top: 0px;
