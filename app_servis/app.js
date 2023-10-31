@@ -33,7 +33,7 @@ app.post("/novo-jelo", (req, res) => {
     
     req.body.Opis = req.body.Opis.replace(/\r?\n|\r/g, '<br>');
 
-    fs.appendFile("auto.txt", 
+    fs.appendFile("jela.txt", 
     JSON.stringify(req.body) + "\n", 
     function(err, succ){
         res.send("Poruka je poslana, očekujte odgovor uskoro");
@@ -43,9 +43,9 @@ app.post("/novo-jelo", (req, res) => {
 });
 
 app.get("/jela", (req, res) => {
-    const auta = [];
+    const jela  = [];
 
-    fs.readFile('auto.txt', 'utf8', (err, data) => {
+    fs.readFile('jela.txt', 'utf8', (err, data) => {
         if (err) {
           console.error('Error reading file:', err);
           res.status(500).send({ error: "Greška" });
@@ -58,7 +58,7 @@ app.get("/jela", (req, res) => {
             if(redovi[i].trim() !== ''){
                 try{
                     let obj = JSON.parse( redovi[i] ); 
-                    auta.push(obj);               
+                    jela.push(obj);               
                 } catch(parseerror){
                     console.error("Error parsing json",parseerror);
                 }
@@ -66,13 +66,9 @@ app.get("/jela", (req, res) => {
            
         
         }
-    
-        res.json(auta);
-    }
-
+        res.json(jela);
+        }
       });
-      
-
     });
     
 app.listen(8000);
