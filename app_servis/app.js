@@ -15,33 +15,26 @@ app.get('/', (req, res) => {
 
 app.post("/novo-jelo", (req, res) => {
     const shema = Joi.object().keys({
-        Naziv: Joi.string().required(),
-        Model: Joi.required(),
-        Cena: Joi.number().greater(0).required(),
-        Godiste: Joi.number().greater(0).required(),
-        Snaga: Joi.number().required(),
-        Kubikaza: Joi.number().required(),
-        Opis: Joi.string()
-
+        naziv: Joi.string().trim().min(5).max(25).required(),
+        opis: Joi.string().trim().min(1).required(),
+        kategorija: Joi.string().required(),
+        cena: Joi.number().greater(0).required()
     });
     const {error, succ} = shema.validate(req.body);
 
     if (error) {
-        res.send("Greška: " + error.details[0].message);
+        res.send("Greška 1: " + error.details[0].message);
         return;
     }
-    
-    req.body.Opis = req.body.Opis.replace(/\r?\n|\r/g, '<br>');
 
+    req.body.opis = req.body.opis.replace(/\r?\n|\r/g, '<br>');
     fs.appendFile("jela.txt", 
     JSON.stringify(req.body) + "\n", 
     function(err, succ){
         res.send("Poruka je poslana, očekujte odgovor uskoro");
-    }
-);
+    });
 
 });
-
 app.get("/jela", (req, res) => {
     const jela  = [];
 
@@ -70,5 +63,5 @@ app.get("/jela", (req, res) => {
         }
       });
     });
-    
+
 app.listen(8000);

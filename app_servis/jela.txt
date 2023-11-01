@@ -1,0 +1,3 @@
+{"naziv":"Dusansada","opis":"sdaaa","kategorija":"2","cena":"1111"}
+{"naziv":"Dusansada","opis":"sadsa","kategorija":"1","cena":"1123"}
+{"naziv":"Dusansada","opis":"dsadsa<br>dsadasd","kategorija":"2","cena":"11223"}
