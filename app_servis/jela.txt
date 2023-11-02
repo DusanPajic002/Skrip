@@ -1,2 +1,0 @@
-{"naziv":"DSAsad","opis":"sdadas","kategorija":"1","cena":"1111"}
-{"naziv":"Dusansada","opis":"1231","kategorija":"2","cena":"111"}
