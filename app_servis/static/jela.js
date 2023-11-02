@@ -16,7 +16,10 @@ window.addEventListener("load", function () {
                 let td_opis = document.createElement("td");
                 let td_cena = document.createElement("td");
                 let td_akcije = document.createElement("td");
-                td_kategorija.innerHTML = oreditip(data[i].Model);
+
+                td_kategorija.innerHTML = oreditip(data[i].kategorija);
+                td_opis.innerHTML = data[i].opis;
+                td_cena.innerHTML = data[i].cena;
 
                 tr.appendChild(td_kategorija);
                 tr.appendChild(td_opis);
@@ -26,14 +29,13 @@ window.addEventListener("load", function () {
                 let btn = document.createElement('button');
                 btn.type = "button";
                 btn.classList.add("btn");
-                btn.classList.add("btn-color");
+                btn.classList.add("btn-primary");
                 btn.innerHTML = "Promena Cene";
                 td_akcije.appendChild(btn);
-                td_akcije.appendChild(this.document.createElement('br'));
                 let link = this.document.createElement('a');
-                link.setAttribute('href', 'jela.html');
+                link.setAttribute('href', 'jelo.html');
                 link.classList.add('btn');
-                link.classList.add('btn-secondary');
+                link.classList.add('btn-dark');
                 link.innerHTML = 'Izmeni';
                 td_akcije.appendChild(link);
 

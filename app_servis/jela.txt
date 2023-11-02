@@ -1,0 +1,2 @@
+{"naziv":"Margarita","opis":"Margarita 18","kategorija":"1","cena":"1850"}
+{"naziv":"asdsada","opis":"d1","kategorija":"1","cena":"111"}
