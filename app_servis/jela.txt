@@ -3,3 +3,6 @@
 {"naziv":"Dusansada","opis":"saasdsa","kategorija":"1","cena":"111"}
 {"naziv":"dsadaa","opis":"321321","kategorija":"1","cena":"312321"}
 {"naziv":"321sdds","opis":"321","kategorija":"1","cena":"111"}
+{"naziv":"dsadasd","opis":"1321","kategorija":"2","cena":"1123"}
+{"naziv":"DSAdasd","opis":"232","kategorija":"1","cena":"1231"}
+{"naziv":"12244","opis":"asda","kategorija":"1","cena":"1"}

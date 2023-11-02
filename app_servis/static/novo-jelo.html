@@ -40,7 +40,7 @@
             <nav class="navbar navbar-expand-sm bg-white navbar-dark">  </nav>
         </div>
         <h1>Novo jelo</h1>
-        <form method="post" action="/novo-jelo" onsubmit="return validacija()">
+        <form method="post" action="/novo-jelo" id="forma">
             <div class="mb-3 mt-3">
                 <label for="naziv">Naziv:</label>
                 <input type="text" class="form-control"  required id="naziv" placeholder="Naziv jela" name="naziv" onkeypress="this.classList.remove('success'); this.classList.remove('error')">
@@ -65,26 +65,11 @@
         
             
             <div class="mb-3 mt-3">
-                <button class="btn btn-success">Potvrdi</button>
+                <button class="btn btn-success" id="potvrda">Potvrdi</button>
                 <button class="btn btn-success"><a class="nav-link" href="jela.html">Nazad</a></button>
             </div>
         </form>
-
     </main>
-    <script>
-        function validacija(){
-            let validno = true;
-            if( document.getElementById("naziv").value.length < 3 ){
-                validno = false;
-                document.getElementById("naziv").classList.add("error");
-                document.getElementById("naziv").classList.remove("success");
-            }
-            else {
-                document.getElementById("naziv").classList.add("success");
-                document.getElementById("naziv").classList.remove("error");
-            }
-            return validno;
-        }
-    </script>
+    <script src="novo-jelo.js"></script>
 </body>
 </html>
