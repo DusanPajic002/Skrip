@@ -1,8 +1,2 @@
-{"naziv":"Dusansada","opis":"adsaa","kategorija":"1","cena":"11111"}
-{"naziv":"dsadaa","opis":"13213123","kategorija":"2","cena":"111111111111"}
-{"naziv":"Dusansada","opis":"saasdsa","kategorija":"1","cena":"111"}
-{"naziv":"dsadaa","opis":"321321","kategorija":"1","cena":"312321"}
-{"naziv":"321sdds","opis":"321","kategorija":"1","cena":"111"}
-{"naziv":"dsadasd","opis":"1321","kategorija":"2","cena":"1123"}
-{"naziv":"DSAdasd","opis":"232","kategorija":"1","cena":"1231"}
-{"naziv":"12244","opis":"asda","kategorija":"1","cena":"1"}
+{"naziv":"DSAsad","opis":"sdadas","kategorija":"1","cena":"1111"}
+{"naziv":"Dusansada","opis":"1231","kategorija":"2","cena":"111"}
