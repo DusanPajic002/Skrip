@@ -6,14 +6,14 @@ const Joi = require('joi');
 const fs = require('fs');
 
 app.use( express.static( path.join(__dirname, 'static') ) );
-app.use('/novo-jelo', BP.urlencoded({extended: false}));
+app.use('/nova-pica', BP.urlencoded({extended: false}));
 
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'static', 'index.html'));
 });
 
-app.post("/novo-jelo", (req, res) => {
+app.post("/nova-pica", (req, res) => {
     const shema = Joi.object().keys({
         naziv: Joi.string().trim().min(5).max(25).required(),
         opis: Joi.string().trim().min(1).required(),

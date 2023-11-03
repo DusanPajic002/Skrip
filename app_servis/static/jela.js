@@ -1,8 +1,14 @@
 function oreditip(i) {
     if (i == 1)
-        return "Pica";
+        return "Margherita";
     else if (i == 2)
-        return "Sendvic";
+        return "Vegetariana";
+    else if (i == 3)
+        return "Tuna";
+    else if (i == 4)
+        return "Capriciossa";
+    else if (i == 5)
+        return "Pepperoni";
 }
 
 window.addEventListener("load", function () {

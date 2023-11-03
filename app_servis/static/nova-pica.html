@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Novo jelo</title>
+    <title>Nova pica</title>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,22 +39,25 @@
             <nav class="navbar navbar-expand-sm bg-primary navbar-dark">  </nav>
             <nav class="navbar navbar-expand-sm bg-white navbar-dark">  </nav>
         </div>
-        <h1>Novo jelo</h1>
-        <form method="post" action="/novo-jelo" id="forma">
+        <h1>Napravi novu picu</h1>
+        <form method="post" action="/nova-pica" id="forma">
             <div class="mb-3 mt-3">
                 <label for="naziv">Naziv:</label>
-                <input type="text" class="form-control"  required id="naziv" placeholder="Naziv jela" name="naziv" onkeypress="this.classList.remove('success'); this.classList.remove('error')">
+                <input type="text" class="form-control"  required id="naziv" placeholder="Naziv pice" name="naziv" onkeypress="this.classList.remove('success'); this.classList.remove('error')">
             </div>           
             <div class="mb-3 mt-3">
                 <label for="opis" class="form-label">Opis:</label>
-                <textarea id="opis" name="opis" placeholder="Opisite jelo" class="form-control"></textarea>
+                <textarea id="opis" name="opis" placeholder="Opisite picu" class="form-control"></textarea>
             </div>
             <div class="row">
                 <div class="col-6">
-                    <label for="cena" class="form-label">Izaberi kategoriju:</label>
+                    <label for="cena" class="form-label">Izaberi vrstu:</label>
                     <select class="form-select" name="kategorija" id="kategorija">
-                        <option value="1">Pizza</option>
-                        <option value="2">Sendvič</option>
+                        <option value="1">Margherita</option>
+                        <option value="2">Vegetariana</option>
+                        <option value="3">Tuna</option>
+                        <option value="4">Capriciossa</option>
+                        <option value="5">Pepperoni</option>
                     </select>                
                 </div>
                 <div class="col-6">
@@ -70,6 +73,6 @@
             </div>
         </form>
     </main>
-    <script src="novo-jelo.js"></script>
+    <script src="nova-pica.js"></script>
 </body>
 </html>
