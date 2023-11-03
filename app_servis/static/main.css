@@ -2,11 +2,11 @@ head{
     background-color: rgb(233, 200, 129);
 }
 body {
-    background-color: orange;
+    background-color: rgba(231, 198, 137, 0.644);
     background: url("123.jpg");
 }
 main.container {
-    background-color: rgb(233, 200, 129);
+    background-color:       rgba(236, 209, 150, 0.966);
     box-shadow: 0px 0px 40px black;
     border: 0px solid black;
     margin-top: 80px;
@@ -14,7 +14,7 @@ main.container {
     height:1100px;
 }
 #sastojcirow{
-    background-color: wheat;
+    background-color: rgba(245, 179, 179, 0.507);
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
