@@ -2,4 +2,3 @@
 {"naziv":"Vegetariana","opis":"Pelat, mocarela, bebi spanać, feta, paprika miks, paradajz, pečurke, ljubičasti luk. ","kategorija":"2","cena":"580"}
 {"naziv":"Margarita","opis":"Sir, pelat, paradajz, parmezan, bosiljak, maslinovo ulje.","kategorija":"1","cena":"990"}
 {"naziv":"Capriciossa","opis":"Pelat, sir, šunka, pečurke.","kategorija":"4","cena":"610"}
-{"naziv":"Capriciossa","opis":"Pelat, sir, šunka, pečurke.","kategorija":"4","cena":"960"}
