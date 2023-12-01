@@ -1,15 +1,15 @@
 const express = require("express");
 const route = express.Router();
 
-const { sequelize, Kategorija, Jelo, JeloSastojak, Sastojak, StavkaNarudzbine } = require("../models");
 
 route.use(express.json());
 route.use(express.urlencoded({ extended: true }));
+const { sequelize, Kategorija, JeloSastojak, Sastojak, StavkaNarudzbine } = require("../models");
 
 route.get("/", async (req, res) => {
      try {
-         const kategorije = await Kategorija.findAll();
-         return res.json(kategorije);
+        const jela = await Jelo.findAll();
+        return res.json(jela);
      } catch (err) {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });
@@ -18,8 +18,8 @@ route.get("/", async (req, res) => {
  
  route.get("/:id", async (req, res) => {
      try {
-         const jelo = await Jelo.findByPk(req.params.id);
-         return res.json(jelo);
+        const jelo = await Jelo.findByPk(req.params.id);
+        return res.json(jelo);
      } catch (err) {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });
@@ -28,15 +28,12 @@ route.get("/", async (req, res) => {
 
  route.post("/", async (req, res) => {
      try {
-         // Ako objekat koji se šalje odgovara strukturi modela
-         const novi = await Jelo.create(req.body);
-         return res.json(novi);
+        const novi = await Jelo.create(req.body);
+        return res.json(novi);
      } catch (err) {
-         // Ako objekat nije iste strukture kao model
          const novi = {
-             naziv: req.body.naziv, // ili neko drugo ime atributa koje koristite
-             opis: req.body.opis,   // ili neko drugo ime atributa koje koristite
-             // ... ostali atributi
+             naziv: req.body.naziv,
+             opis: req.body.opis,
          };
          const insertovani = await Jelo.create(novi);
          return res.json(insertovani);
@@ -46,17 +43,13 @@ route.get("/", async (req, res) => {
  // PUT ruta za izmenu postojećeg jela
  route.put("/:id", async (req, res) => {
      try {
-         const jelo = await Jelo.findByPk(req.params.id);
-         if (jelo) {
-             jelo.naziv = req.body.naziv;
-             jelo.opis = req.body.opis;
-             jelo.kategorija_id = req.body.kategorija_id; // Pretpostavljam da imate ovaj atribut u modelu
-             // ... ostali atributi koje želite ažurirati
-             await jelo.save();
-             return res.json(jelo);
-         } else {
-             return res.status(404).json({ error: "Jelo nije pronađeno" });
-         }
+            const jelo = await Jelo.findByPk(req.params.id);
+            jelo.naziv = req.body.naziv;
+            jelo.opis = req.body.opis;
+            jelo.cena = req.body.cena;
+            jelo.kategorija_id = req.body.kategorija_id;
+            await jelo.save();
+            return res.json(jelo);
      } catch (err) {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });
@@ -65,13 +58,9 @@ route.get("/", async (req, res) => {
 
  route.delete("/:id", async (req, res) => {
      try {
-         const jelo = await Jelo.findByPk(req.params.id);
-         if (jelo) {
-             await jelo.destroy();
-             return res.json({ id: jelo.id }); // Vraćamo ID obrisane stavke
-         } else {
-             return res.status(404).json({ error: "Jelo nije pronađeno" });
-         }
+        const jelo = await Jelo.findByPk(req.params.id);
+        await jelo.destroy();
+        return res.json({ id: jelo.id });
      } catch (err) {
          console.log(err);
          res.status(500).json({ error: "Greška", data: err });

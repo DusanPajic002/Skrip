@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // Promenjena putanja zahteva za modele
-const { sequelize, Jelo, Kategorija, Sastojak, Narudzbina } = require("../models");
+const { sequelize, Jelo, Kategorija, JeloSastojak, Sastojak, StavkaNarudzbine, Narudzbina } = require("./models");
 
 const jeloRoutes = require('./routes/jelo.js');
 const kategorijaRoutes = require("./routes/kategorija.js");
@@ -17,7 +17,7 @@ app.use("/narudzbina", narudzbinaRoutes);
 app.use("/sastojak", sastojakRoutes);
 
 app.listen({ port:9000 }, async () => {
-	console.log("Started server on localhost:9000"); // Ispravio sam port na 9000 jer je u log poruci bio 8000
+	console.log("Started server on localhost:8000");
 	await sequelize.sync({force:true});
 	console.log("DB synced");
-});
+  });
