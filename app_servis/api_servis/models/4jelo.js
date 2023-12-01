@@ -4,10 +4,10 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Jelo extends Model {
-    static associate({Kategorija, JeloSastojak, StavkaNarudzbine }) {
-      Jelo.belongsTo(Kategorija, {foreignKey: 'kategorija_id', as: 'kategorija'}); 
-      this.hasMany(JeloSastojak, {foreignKey: "jelo_id", as:"jelo"});
-      this.hasMany(StavkaNarudzbine, {foreignKey: "jelo_id", as:"jelo"});
+    static associate(models) {
+      Jelo.belongsTo(models.Kategorija, {foreignKey: kategorija_id, as: 'kategorija'}); 
+      this.hasMany(models.JeloSastojak, {foreignKey: jelo_id, as:"jelo"});
+      this.hasMany(models.StavkaNarudzbine, {foreignKey: jelo_id, as:"jelo"});
     }
   }
   Jelo.init({
