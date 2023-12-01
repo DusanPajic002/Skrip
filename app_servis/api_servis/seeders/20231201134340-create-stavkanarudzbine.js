@@ -1,17 +1,15 @@
 'use strict';
 
+const Narudzbina = require('../models/3narudzbina');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    await queryInterface.bulkInsert('stavkanarudzbine',
+    [
+        {id:"1", naziv:"Test1", jelo_id:2, narudzbina_id:1 },
+        {id:"2", naziv:"Test2",jelo_id:1, narudzbina_id:1},
+    ]);
   },
 
   async down (queryInterface, Sequelize) {

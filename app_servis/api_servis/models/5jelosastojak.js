@@ -10,11 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   JeloSastojak.init({
-    naziv: {
-      type: DataTypes.STRING(120),
-      unique: true,
-      allowNull: false
-    },
     jelo_id: {
         type: DataTypes.INTEGER,
         allowNull: false
