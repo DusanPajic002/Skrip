@@ -43,13 +43,13 @@ route.get("/", async (req, res) => {
  // PUT ruta za izmenu postojećeg jela
  route.put("/:id", async (req, res) => {
      try {
-            const jelo = await Jelo.findByPk(req.params.id);
-            jelo.naziv = req.body.naziv;
-            jelo.opis = req.body.opis;
-            jelo.cena = req.body.cena;
-            jelo.kategorija_id = req.body.kategorija_id;
-            await jelo.save();
-            return res.json(jelo);
+        const jelo = await Jelo.findByPk(req.params.id);
+        jelo.naziv = req.body.naziv;
+        jelo.opis = req.body.opis;
+        jelo.cena = req.body.cena;
+        jelo.kategorija_id = req.body.kategorija_id;
+        await jelo.save();
+        return res.json(jelo);
      } catch (err) {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });

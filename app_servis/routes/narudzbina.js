@@ -6,53 +6,64 @@ route.use(express.urlencoded({extended:true}));
 const { sequelize, Kategorija, Jelo, JeloSastojak, Sastojak, StavkaNarudzbine } = require(__dirname + '/../models/model.js');
 
 
-route.get("/", async (req, res) => {
-    try{
-         return res.json("sva jela");
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+router.get("/", async (req, res) => {
+     try {
+       const narudzbine = await Narudzbina.findAll();
+       return res.json(narudzbine);
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
- route.get("/:id", async (req, res) => {
-    try{
-         return res.json("jelo čiji je id=" + req.params.id);
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+router.get("/:id", async (req, res) => {
+     try {
+       const narudzbina = await Narudzbina.findByPk(req.params.id);
+       return res.json(narudzbina);
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
- 
- route.post("/", async (req, res) => {
-    try{
-         return res.json("unos novog jela čiji su podaci  u req.body");
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
- 
- 
- route.put("/:id", async (req, res) => {
-    try{
-         return res.json("izmena podataka jela čiji je id="+req.params.id+" a podaci su u req.body");
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+router.post("/", async (req, res) => {
+     try {
+       const novaNarudzbina = await Narudzbina.create(req.body);
+       return res.json(novaNarudzbina);
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
  
- route.delete("/:id", async (req, res) => {
-    try{
-         return res.json(req.params.id);  //id obrisanog
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+router.put("/:id", async (req, res) => {
+     try {
+       const narudzbina = await Narudzbina.findByPk(req.params.id);
+       narudzbina.naziv = req.body.naziv;
+       narudzbina.status = req.body.status;
+       narudzbina.cena = req.body.cena;
+       narudzbina.zakazano_vreme = req.body.zakazano_vreme;
+       narudzbina.adresa = req.body.adresa;
+       await narudzbina.save();
+       return res.json(narudzbina);
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
+ 
+ 
+router.delete("/:id", async (req, res) => {
+     try {
+       const narudzbina = await Narudzbina.findByPk(req.params.id);
+       await narudzbina.destroy();
+       return res.json({ id: narudzbina.id }); // Vraća ID obrisane narudžbine
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});;
  
 
 

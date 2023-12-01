@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // Promenjena putanja zahteva za modele
-const { sequelize, Jelo, Kategorija, JeloSastojak, Sastojak, StavkaNarudzbine, Narudzbina } = require("./models");
+const { sequelize, Jelo, Kategorija, Sastojak, Narudzbina } = require("./models");
 
 const jeloRoutes = require('./routes/jelo.js');
 const kategorijaRoutes = require("./routes/kategorija.js");
