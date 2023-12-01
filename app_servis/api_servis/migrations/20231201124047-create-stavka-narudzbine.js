@@ -19,8 +19,16 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      jelo_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      narudzbina_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false
       }
-    });
+      });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('StavkaNarudzbines');

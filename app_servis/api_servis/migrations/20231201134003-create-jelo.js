@@ -25,6 +25,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      }, 
+      kategorija_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false
       }
     });
   },
