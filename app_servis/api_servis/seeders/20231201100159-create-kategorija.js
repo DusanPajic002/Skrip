@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('kategorija',
+    await queryInterface.bulkInsert('kategorijas',
     [ 
         {id: 11, naziv: "Klasične Pizze", opis: "Klasika je najbolja"},
         {id: 22, naziv: "Veganske Pizze", opis: "Zeleni krug"},
@@ -14,6 +14,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('kategorija', null, {});
+    await queryInterface.bulkDelete('kategorijas', null, {});
   }
 };

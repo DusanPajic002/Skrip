@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
 
-    await queryInterface.bulkInsert('jelo',
+    await queryInterface.bulkInsert('jelos',
     [
         {id:1, naziv:"Vegetarijanska", opis:"Priroda i drustvo", cena: 1200, kategorija_id:22},
         {id:2, naziv:"Capricciosa", opis:"Uvek za", cena: 300, kategorija_id:11},
@@ -17,6 +17,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('jelo', null, {});
+    await queryInterface.bulkDelete('jelos', null, {});
   }
 };
