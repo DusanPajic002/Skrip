@@ -12,14 +12,21 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      jelo_id: {
-        
+      jelo_id: { 
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Jelos',
+          key: 'id'
+        }
       },
       sastojak_id: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Sastojaks',
+          key: 'id'
+        }
       }
       });
   },

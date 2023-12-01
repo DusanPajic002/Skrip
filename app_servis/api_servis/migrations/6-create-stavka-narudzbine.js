@@ -14,11 +14,19 @@ module.exports = {
       },
       jelo_id: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Jelos',
+          key: 'id'
+        }
       },
       narudzbina_id: {
           allowNull: false,
-          type: Sequelize.INTEGER
+          type: Sequelize.INTEGER,
+          references: {
+            model: 'Narudzbinas',
+            key: 'id'
+          }
       }
       });
   },

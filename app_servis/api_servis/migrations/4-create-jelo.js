@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Kategorijas', // Naziv tabele kategorije
+          model: 'Kategorijas',
           key: 'id'
         }
       }
