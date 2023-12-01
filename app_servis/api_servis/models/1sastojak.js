@@ -13,7 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(120),
       unique: true,
       allowNull: false
+    },
+    opis: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
+  
   }, {
     sequelize,
     modelName: 'Sastojak',

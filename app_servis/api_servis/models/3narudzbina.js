@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Narudzbina extends Model {
     static associate({StavkaNarudzbine}) {
-      this.hasMany(StavkaNarudzbine, {foreignKey: "narudzbina_id",as:"narudzbina"});
+      this.hasMany(StavkaNarudzbine, {foreignKey: "narudzbina_id", as:"narudzbina"});
     }
   }
   Narudzbina.init({
@@ -33,13 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(120),
       unique: true,
       allowNull: false
-    },
-    sadrzaj_narudzbine: {
-      type: DataTypes.STRING(120),
-      unique: true,
-      allowNull: false
     }
-  },{
+  }, {
     sequelize,
     modelName: 'Narudzbina',
   });
