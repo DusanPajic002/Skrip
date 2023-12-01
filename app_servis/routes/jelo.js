@@ -1,11 +1,10 @@
 const express = require("express");
 const route = express.Router();
 
-// Dodajte modele koje ste destrukturirali iz vašeg models foldera
+const { sequelize, Kategorija, Jelo, JeloSastojak, Sastojak, StavkaNarudzbine } = require("../models");
 
 route.use(express.json());
 route.use(express.urlencoded({ extended: true }));
-module.exports = route;
 
 route.get("/", async (req, res) => {
      try {
@@ -17,7 +16,6 @@ route.get("/", async (req, res) => {
      }
  });
  
- // U rutu GET /jelo/:id dodajte ovaj kod
  route.get("/:id", async (req, res) => {
      try {
          const jelo = await Jelo.findByPk(req.params.id);
@@ -79,3 +77,12 @@ route.get("/", async (req, res) => {
          res.status(500).json({ error: "Greška", data: err });
      }
  });
+
+module.exports = route;
+
+
+
+
+
+
+ 

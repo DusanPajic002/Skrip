@@ -3,6 +3,8 @@ const route = express.Router();
 
 route.use(express.json());
 route.use(express.urlencoded({extended:true}));
+const { sequelize, Kategorija, Jelo, JeloSastojak, Sastojak, StavkaNarudzbine } = require("../models");
+
 module.exports = route;
 
 route.get("/", async (req, res) => {
