@@ -12,21 +12,14 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       jelo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       sastojak_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       }
       });
   },

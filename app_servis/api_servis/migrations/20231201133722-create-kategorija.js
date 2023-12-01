@@ -12,14 +12,10 @@ module.exports = {
       naziv: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+      opis: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      } 
     });
   },
   async down(queryInterface, Sequelize) {

@@ -17,18 +17,10 @@ module.exports = {
       },
       cena: {
         type: Sequelize.INTEGER
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }, 
       kategorija_id: {
-          type: DataTypes.INTEGER,
-          allowNull: false
+          allowNull: false,
+          type: Sequelize.INTEGER
       }
     });
   },

@@ -9,24 +9,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      komada: {
+      naziv: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       jelo_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       narudzbina_id: {
-          type: DataTypes.INTEGER,
-          allowNull: false
+          allowNull: false,
+          type: Sequelize.INTEGER
       }
       });
   },

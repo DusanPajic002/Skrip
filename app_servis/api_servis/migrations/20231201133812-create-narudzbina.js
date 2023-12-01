@@ -9,16 +9,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      naziv: {
+        type: Sequelize.STRING
+      },
+      zakazano_vreme: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       status: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      cena: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      adresa: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
   },
