@@ -17,10 +17,14 @@ module.exports = {
       },
       cena: {
         type: Sequelize.INTEGER
-      }, 
+      },
       kategorija_id: {
-          allowNull: false,
-          type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Kategorijas', // Naziv tabele kategorije
+          key: 'id'
+        }
       }
     });
   },
