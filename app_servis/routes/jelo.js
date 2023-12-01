@@ -2,7 +2,6 @@ const express = require("express");
 const route = express.Router();
 
 // Dodajte modele koje ste destrukturirali iz vašeg models foldera
-const { sequelize, Kategorija, JeloSastojak, Sastojak, StavkaNarudzbine } = require("../models");
 
 route.use(express.json());
 route.use(express.urlencoded({ extended: true }));
