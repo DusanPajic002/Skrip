@@ -46,7 +46,7 @@ route.get("/", async (req, res) => {
         jelo.opis = req.body.opis;
         jelo.cena = req.body.cena;
         jelo.kategorija_id = req.body.kategorija_id;
-        await jelo.save();
+        jelo.save();
         return res.json(jelo);
      } catch (err) {
          console.log(err);

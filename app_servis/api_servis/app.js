@@ -17,7 +17,7 @@ app.use("/narudzbina", narudzbinaRoutes);
 app.use("/sastojak", sastojakRoutes);
 
 app.listen({ port:9000 }, async () => {
-	console.log("Started server on localhost:8000");
-	await sequelize.sync({force:true});
+	console.log("Started server on localhost:9000");
+	await sequelize.sync({force:false});
 	console.log("DB synced");
-  });
+});	
