@@ -3,10 +3,9 @@ const route = express.Router();
 
 route.use(express.json());
 route.use(express.urlencoded({extended:true}));
-const { sequelize, Kategorija, Jelo, JeloSastojak, Sastojak, StavkaNarudzbine } = require(__dirname + '/../models/model.js');
 
 
-router.get("/", async (req, res) => {
+route.get("/", async (req, res) => {
      try {
        const narudzbine = await Narudzbina.findAll();
        return res.json(narudzbine);
@@ -16,7 +15,7 @@ router.get("/", async (req, res) => {
      }
 });
  
-router.get("/:id", async (req, res) => {
+route.get("/:id", async (req, res) => {
      try {
        const narudzbina = await Narudzbina.findByPk(req.params.id);
        return res.json(narudzbina);
@@ -26,7 +25,7 @@ router.get("/:id", async (req, res) => {
      }
 });
  
-router.post("/", async (req, res) => {
+route.post("/", async (req, res) => {
      try {
        const novaNarudzbina = await Narudzbina.create(req.body);
        return res.json(novaNarudzbina);
@@ -37,7 +36,7 @@ router.post("/", async (req, res) => {
 });
  
  
-router.put("/:id", async (req, res) => {
+route.put("/:id", async (req, res) => {
      try {
        const narudzbina = await Narudzbina.findByPk(req.params.id);
        narudzbina.naziv = req.body.naziv;
@@ -54,7 +53,7 @@ router.put("/:id", async (req, res) => {
 });
  
  
-router.delete("/:id", async (req, res) => {
+route.delete("/:id", async (req, res) => {
      try {
        const narudzbina = await Narudzbina.findByPk(req.params.id);
        await narudzbina.destroy();
@@ -66,5 +65,5 @@ router.delete("/:id", async (req, res) => {
 });;
  
 
-
+module.exports = route;
 

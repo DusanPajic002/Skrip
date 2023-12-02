@@ -2,9 +2,7 @@ const express = require("express");
 const route = express.Router();
 
 route.use(express.json());
-route.use(express.urlencoded({extended:true}));
-const { sequelize, Kategorija, Jelo, JeloSastojak, Sastojak, StavkaNarudzbine } = require(__dirname + '/../models/model.js');
-
+route.use(express.urlencoded({ extended: true }));
 
 route.get("/", async (req, res) => {
      try {
@@ -63,3 +61,4 @@ route.delete("/:id", async (req, res) => {
 
 
 
+module.exports = route;

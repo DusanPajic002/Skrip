@@ -4,7 +4,6 @@ const route = express.Router();
 
 route.use(express.json());
 route.use(express.urlencoded({ extended: true }));
-const { sequelize, Kategorija, JeloSastojak, Sastojak, StavkaNarudzbine } = require("../models");
 
 route.get("/", async (req, res) => {
      try {
@@ -66,8 +65,7 @@ route.get("/", async (req, res) => {
          res.status(500).json({ error: "Greška", data: err });
      }
  });
-
-module.exports = route;
+ module.exports = route;
 
 
 

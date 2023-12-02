@@ -4,10 +4,10 @@ const app = express();
 // Promenjena putanja zahteva za modele
 const { sequelize, Jelo, Kategorija, Sastojak, Narudzbina } = require("./models");
 
-const jeloRoutes = require('./routes/jelo.js');
-const kategorijaRoutes = require("./routes/kategorija.js");
-const narudzbinaRoutes = require("./routes/narudzbina.js");
-const sastojakRoutes = require("./routes/sastojak.js");
+const jeloRoutes = require('../routes/jelo.js');
+const kategorijaRoutes = require("../routes/kategorija.js");
+const narudzbinaRoutes = require("../routes/narudzbina.js");
+const sastojakRoutes = require("../routes/sastojak.js");
 
 app.get('/', (req, res) => { res.send('Hello from REST API service') });
 
