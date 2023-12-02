@@ -6,6 +6,7 @@ window.addEventListener("load", function () {
             for (let i = 0; i < data.length; i++) {
                 let tr = document.createElement("tr");
                 let td_kategorija = document.createElement("td");
+                let td_naziv = document.createElement("td");
                 let td_opis = document.createElement("td");
                 let td_cena = document.createElement("td");
                 let td_akcije = document.createElement("td");
@@ -16,8 +17,10 @@ window.addEventListener("load", function () {
 
                 td_opis.innerHTML = data[i].opis;
                 td_cena.innerHTML = data[i].cena;
+                td_naziv.innerHTML = data[i].naziv;
 
                 tr.appendChild(td_kategorija);
+                tr.appendChild(td_naziv);
                 tr.appendChild(td_opis);
                 tr.appendChild(td_cena);
                 tr.appendChild(td_akcije);
@@ -33,6 +36,7 @@ window.addEventListener("load", function () {
                     if (c !== null) {
                         fetch("http://localhost:9000/jelo/promeni-cenu/" + id, {
                             method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ cena: c })
                         })
                         .then(response => response.json())
@@ -64,3 +68,9 @@ window.addEventListener("load", function () {
         });
 
 });
+
+
+
+
+
+
