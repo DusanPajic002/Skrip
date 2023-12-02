@@ -28,9 +28,26 @@ window.addEventListener("load", function () {
                 btn.classList.add("btn");
                 btn.classList.add("btn-primary");
                 btn.innerHTML = "Promena Cene";
-                btn.onclick = function() {
-                    // Ovde možete dodati funkcionalnost za promenu cene
-                  };
+                btn.onclick = function () {
+                    var c = prompt("Unesi novu cenu:");
+                    var id = this.parentNode.dataset.id;
+                    if (c !== null) {
+                        fetch("http://localhost:9000/promeni-cenu/" + id, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ cena: c })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert("Cena je ažurirana."); 
+                            td_cena.innerHTML = c;
+                        })
+                        .catch(err => {
+                            alert("Desila se greska");
+                            console.log(err); // Ispis greške u konzoli
+                        });
+                    }
+                };
                 td_akcije.appendChild(btn);
                 let link = this.document.createElement('a');
                 link.setAttribute('href','jelo.html?id=' + data[i].id);

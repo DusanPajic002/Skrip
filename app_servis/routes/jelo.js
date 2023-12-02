@@ -19,9 +19,9 @@ route.get("/", async (req, res) => {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });
      }
- });
+});
  
- route.get("/:id", async (req, res) => {
+route.get("/:id", async (req, res) => {
      try {
         const jelo = await Jelo.findByPk(req.params.id);
         return res.json(jelo);
@@ -29,9 +29,9 @@ route.get("/", async (req, res) => {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });
      }
- });
+});
 
- route.post("/", async (req, res) => {
+route.post("/", async (req, res) => {
      try {
         const novi = await Jelo.create(req.body);
         return res.json(novi);
@@ -43,10 +43,10 @@ route.get("/", async (req, res) => {
          const insertovani = await Jelo.create(novi);
          return res.json(insertovani);
      }
- });
+});
  
- // PUT ruta za izmenu postojećeg jela
- route.put("/:id", async (req, res) => {
+
+route.put("/:id", async (req, res) => {
      try {
         const jelo = await Jelo.findByPk(req.params.id);
         jelo.naziv = req.body.naziv;
@@ -59,20 +59,22 @@ route.get("/", async (req, res) => {
          console.log(err);
          res.status(500).json({ error: "Greska", data: err });
      }
- });
- route.put("http://localhost:9000/promeni-cenu/:id", async (req,res)=>{
-	try{
-   	   	const jelo = await Jelo.findByPk(req.params.id);  //iz url
-    		jelo.cena = req.body.cena;  //iz body
-    	jelo.save();
-    	return res.json(jelo);  //vrati json nove vrednosti jela i završi funkc.
-	} catch(err){
-    	console.log(err);
-    	res.status(500).json({ error: "Greska", data: err });
-	}
 });
 
- route.delete("/:id", async (req, res) => {
+route.put("/promeni-cenu/:id", async (req, res) => {
+    try {
+       const jelo = await Jelo.findByPk(req.params.id);
+       jelo.cena = req.body.cena;
+       await jelo.save();
+       return res.json(jelo);
+    } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greska", data: err });
+    }
+});
+
+
+route.delete("/:id", async (req, res) => {
      try {
         const jelo = await Jelo.findByPk(req.params.id);
         await jelo.destroy();
@@ -81,8 +83,8 @@ route.get("/", async (req, res) => {
          console.log(err);
          res.status(500).json({ error: "Greška", data: err });
      }
- });
- module.exports = route;
+});
+module.exports = route;
 
 
 
