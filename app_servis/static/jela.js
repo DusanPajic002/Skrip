@@ -1,4 +1,3 @@
-
 window.addEventListener("load", function () {
     fetch('http://localhost:9000/jelo/').then(Response => Response.json())
         .then(data => {
@@ -30,21 +29,20 @@ window.addEventListener("load", function () {
                 btn.innerHTML = "Promena Cene";
                 btn.onclick = function () {
                     var c = prompt("Unesi novu cenu:");
-                    var id = this.parentNode.dataset.id;
+                    let id = this.parentNode.parentNode.dataset.id
                     if (c !== null) {
-                        fetch("http://localhost:9000/promeni-cenu/" + id, {
+                        fetch("http://localhost:9000/jelo/promeni-cenu/" + id, {
                             method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ cena: c })
                         })
                         .then(response => response.json())
                         .then(data => {
-                            alert("Cena je ažurirana."); 
+                            alert("Cena je azurirana."); 
                             td_cena.innerHTML = c;
                         })
                         .catch(err => {
                             alert("Desila se greska");
-                            console.log(err); // Ispis greške u konzoli
+                            console.log(err);
                         });
                     }
                 };
