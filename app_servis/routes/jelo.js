@@ -6,7 +6,14 @@ route.use(express.json());
 route.use(express.urlencoded({ extended: true }));
 route.get("/", async (req, res) => {
      try {
-        const jela = await Jelo.findAll();
+        const jela = await Jelo.findAll({
+            include: [
+              {
+                model: Kategorija,
+                as: 'kategorija'
+              }
+            ]
+          });
         return res.json(jela);
      } catch (err) {
          console.log(err);
@@ -53,6 +60,17 @@ route.get("/", async (req, res) => {
          res.status(500).json({ error: "Greska", data: err });
      }
  });
+ route.put("http://localhost:9000/promeni-cenu/:id", async (req,res)=>{
+	try{
+   	   	const jelo = await Jelo.findByPk(req.params.id);  //iz url
+    		jelo.cena = req.body.cena;  //iz body
+    	jelo.save();
+    	return res.json(jelo);  //vrati json nove vrednosti jela i završi funkc.
+	} catch(err){
+    	console.log(err);
+    	res.status(500).json({ error: "Greska", data: err });
+	}
+});
 
  route.delete("/:id", async (req, res) => {
      try {

@@ -1,18 +1,6 @@
-function oreditip(i) {
-    if (i == 1)
-        return "Margherita";
-    else if (i == 2)
-        return "Vegetariana";
-    else if (i == 3)
-        return "Tuna";
-    else if (i == 4)
-        return "Capriciossa";
-    else if (i == 5)
-        return "Pepperoni";
-}
 
 window.addEventListener("load", function () {
-    fetch('/jela').then(Response => Response.json())
+    fetch('http://localhost:9000/jelo/').then(Response => Response.json())
         .then(data => {
             console.log(data);
 
@@ -23,7 +11,10 @@ window.addEventListener("load", function () {
                 let td_cena = document.createElement("td");
                 let td_akcije = document.createElement("td");
 
-                td_kategorija.innerHTML = oreditip(data[i].kategorija);
+                tr.dataset.id = data[i].id;
+
+                td_kategorija.innerHTML = data[i].kategorija.naziv;
+
                 td_opis.innerHTML = data[i].opis;
                 td_cena.innerHTML = data[i].cena;
 
@@ -37,9 +28,12 @@ window.addEventListener("load", function () {
                 btn.classList.add("btn");
                 btn.classList.add("btn-primary");
                 btn.innerHTML = "Promena Cene";
+                btn.onclick = function() {
+                    // Ovde možete dodati funkcionalnost za promenu cene
+                  };
                 td_akcije.appendChild(btn);
                 let link = this.document.createElement('a');
-                link.setAttribute('href', 'jelo.html');
+                link.setAttribute('href','jelo.html?id=' + data[i].id);
                 link.classList.add('btn');
                 link.classList.add('btn-dark');
                 link.innerHTML = 'Izmeni';
