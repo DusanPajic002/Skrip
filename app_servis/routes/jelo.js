@@ -32,6 +32,20 @@ route.get("/:id", async (req, res) => {
 });
 
 route.post("/", async (req, res) => {
+    try {
+       const novi = await Jelo.create(req.body);
+       return res.json(novi);
+    } catch (err) {
+        const novi = {
+            naziv: req.body.naziv,
+            opis: req.body.opis,
+        };
+        const insertovani = await Jelo.create(novi);
+        return res.json(insertovani);
+    }
+});
+
+route.post("/nova-pica", async (req, res) => {
      try {
         const novi = await Jelo.create(req.body);
         return res.json(novi);
@@ -45,7 +59,6 @@ route.post("/", async (req, res) => {
      }
 });
  
-
 route.put("/:id", async (req, res) => {
      try {
         const jelo = await Jelo.findByPk(req.params.id);

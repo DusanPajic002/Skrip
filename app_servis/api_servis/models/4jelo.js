@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
     },
     cena: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(120),
         allowNull: false
     },
     kategorija_id: {

@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       cena: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       kategorija_id: {
         type: Sequelize.INTEGER,
