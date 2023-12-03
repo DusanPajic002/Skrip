@@ -18,7 +18,8 @@ module.exports = {
         references: {
           model: 'Jelos',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       narudzbina_id: {
           allowNull: false,
@@ -26,7 +27,8 @@ module.exports = {
           references: {
             model: 'Narudzbinas',
             key: 'id'
-          }
+          },
+          onDelete: 'CASCADE'
       }
       });
   },

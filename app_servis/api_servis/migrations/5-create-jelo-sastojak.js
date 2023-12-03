@@ -18,7 +18,8 @@ module.exports = {
         references: {
           model: 'Jelos',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       sastojak_id: {
         allowNull: false,
@@ -26,7 +27,8 @@ module.exports = {
         references: {
           model: 'Sastojaks',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       }
       });
   },

@@ -86,17 +86,22 @@ route.put("/promeni-cenu/:id", async (req, res) => {
     }
 });
 
-
 route.delete("/:id", async (req, res) => {
-     try {
-        const jelo = await Jelo.findByPk(req.params.id);
-        await jelo.destroy();
-        return res.json({ id: jelo.id });
-     } catch (err) {
-         console.log(err);
-         res.status(500).json({ error: "Greška", data: err });
-     }
-});
+    try {
+       const jelo = await Jelo.findByPk(req.params.id);
+       if (jelo) {
+           await jelo.destroy();
+           return res.json({ id: jelo.id });
+       } else {
+           return res.status(404).json({ error: "Jelo nije pronađen" });
+       }
+   } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+   }
+ });
+
+ 
 module.exports = route;
 
 

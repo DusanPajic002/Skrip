@@ -24,7 +24,8 @@ module.exports = {
         references: {
           model: 'Kategorijas',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       }
     });
   },
