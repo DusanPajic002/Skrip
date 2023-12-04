@@ -3,7 +3,7 @@ head{
 }
 body {
     background-color: rgba(231, 198, 137, 0.644);
-    background: url("123.jpg");
+    background: url("../slike/123.jpg");
 }
 main.container {
     background-color:       rgba(236, 209, 150, 0.966);

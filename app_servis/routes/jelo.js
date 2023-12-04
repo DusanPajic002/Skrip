@@ -39,6 +39,7 @@ route.post("/", async (req, res) => {
         const novi = {
             naziv: req.body.naziv,
             opis: req.body.opis,
+            cena: req.body.cena,
         };
         const insertovani = await Jelo.create(novi);
         return res.json(insertovani);
@@ -53,6 +54,7 @@ route.post("/nova-pica", async (req, res) => {
          const novi = {
              naziv: req.body.naziv,
              opis: req.body.opis,
+             cena: req.body.cena,
          };
          const insertovani = await Jelo.create(novi);
          return res.json(insertovani);
