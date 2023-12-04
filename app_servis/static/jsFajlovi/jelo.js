@@ -38,7 +38,6 @@ function dodajSastojak(id){
  });
 }
 
-
 document.getElementById("dodaj-sastojak").addEventListener("click", function(){
     let id = document.getElementById("spisak-sastojaka").value;
     if(!id){

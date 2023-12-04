@@ -24,8 +24,23 @@ route.get("/:id", async (req, res) => {
        res.status(500).json({ error: "Greška", data: err });
      }
 });
- 
- 
+
+route.get("/proveraIDa", async (req, res) => {
+     try {
+        const id = req.params.id; // Extracting the ID from the request parameters
+        const kategorija = await Kategorija.findByPk(id); // Replace Kategorija with your model
+        
+        if (kategorija) {
+            res.status(200).json({ success: true, message: "ID exists" });
+        } else {
+            res.status(404).json({ success: false, message: "ID not found" });
+        }
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
+
 route.post("/", async (req, res) => {
      try {
        const novaKategorija = await Kategorija.create(req.body);
@@ -35,8 +50,7 @@ route.post("/", async (req, res) => {
        res.status(500).json({ error: "Greška", data: err });
      }
 });
- 
- 
+
 route.put("/:id", async (req, res) => {
      try {
        const kategorija = await Kategorija.findByPk(req.params.id);

@@ -32,7 +32,6 @@ document.getElementById("forma").addEventListener("submit", function(event){
     .then(kategorije => {
         let indeks = -1;
         
-
         for(let i=0; i<kategorije.length; i++){
             console.log(kategorije[i].naziv);
             console.log(sel[selectedValue-1].innerText);
@@ -53,8 +52,7 @@ document.getElementById("forma").addEventListener("submit", function(event){
         } else {
           throw new Error('Kategorija nije pronađena.');
         }
-      })
-    .then(data=>{
+    }).then(data=>{
         window.location.href=`/jela.html`;
     })
     .catch(err => console.log(err));
