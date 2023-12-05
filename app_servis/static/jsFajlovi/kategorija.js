@@ -54,6 +54,10 @@ document.getElementById('primeni').addEventListener('click',async function(event
         body: JSON.stringify(dataToSend)
     })
     .then(response => response.json())
+    .then(data => {
+        alert("Promena je sacuvana.");
+        window.location.href = 'kategorije.html';
+     })
     .catch(err => {
         alert("Desila se greska");
     });
