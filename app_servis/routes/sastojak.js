@@ -1,6 +1,6 @@
 const express = require("express");
 const route = express.Router();
-const { sequelize, Jelo, Dostupnost,KategorijaSastojka, Kategorija, Sastojak, Narudzbina } = require("C:/Users/Korisnik/Desktop/Skrip/app_servis/api_servis/models");
+const { sequelize, Jelo, Dostupnost, KategorijaSastojka, Kategorija, Sastojak, Narudzbina } = require("C:/Users/Korisnik/Desktop/Skrip/app_servis/api_servis/models");
 
 route.use(express.json());
 route.use(express.urlencoded({ extended: true }));
@@ -13,8 +13,7 @@ route.get("/", async (req, res) => {
                    model: KategorijaSastojka,
                    as: 'kategorijasastojka'
                  }
-               ]
-             });
+               ]});
           return res.json(sastojci);
      } catch (err) {
           console.log(err);

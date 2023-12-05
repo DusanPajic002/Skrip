@@ -8,7 +8,7 @@ module.exports = {
         {id:1, naziv:"Sos", tip: "ml"},
         {id:2, naziv:"Zacin", tip: "g"},
         {id:3, naziv:"Namaz", tip: "ml"},
-        {id:4, naziv:"Povrca", tip: "g"},
+        {id:4, naziv:"Povrce", tip: "g"},
         {id:5, naziv:"Voce", tip: "g"},
     ]);
   },

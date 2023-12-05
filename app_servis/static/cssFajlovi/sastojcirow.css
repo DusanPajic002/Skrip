@@ -1,0 +1,48 @@
+#namazirow{
+    background-color: rgba(245, 179, 179, 0.507);
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#povrcerow{
+    background-color: rgba(245, 179, 179, 0.507);
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#sosevirow{
+    background-color: rgba(245, 179, 179, 0.507);
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#namazitable{
+    text-align: center;
+    width: 100%;
+    border-color: rgb(70, 110, 70);
+    border: 1px solid;
+    margin-bottom: 20px;
+}
+
+#povrcetable{
+    text-align: center;
+    width: 100%;
+    border-color: rgb(70, 110, 70);
+    border: 1px solid;
+    margin-bottom: 20px;
+}
+
+#sosevitable{
+    text-align: center;
+    width: 100%;
+    border-color: rgb(70, 110, 70);
+    border: 1px solid;
+    margin-bottom: 20px;
+}
