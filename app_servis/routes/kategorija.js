@@ -61,7 +61,7 @@ route.post("/", async (req, res) => {
 route.put("/:id", async (req, res) => {
      try {
        const kategorija = await Kategorija.findByPk(req.params.id);
-       kategorija.naziv = req.body.naziv; // Pretpostavka da postoji atribut 'naziv'
+       kategorija.naziv = req.body.naziv; 
        kategorija.opis = req.body.opis; 
        await kategorija.save();
        return res.json(kategorija);
@@ -71,18 +71,32 @@ route.put("/:id", async (req, res) => {
      }
 });
  
- 
-route.delete("/:id", async (req, res) => {
-     try {
-       const kategorija = await Kategorija.findByPk(req.params.id);
-       await kategorija.destroy();
-       return res.json({ id: kategorija.id }); // Vraća ID obrisane kategorije
-     } catch (err) {
-       console.log(err);
-       res.status(500).json({ error: "Greška", data: err });
-     }
+route.put("/dostupnost/:id", async (req, res) => {
+  try {
+     const kategorija = await Kategorija.findByPk(req.params.id);
+     kategorija.dostupnost_id = req.body.dostupnost_id;
+     await kategorija.save();
+     return res.json(kategorija);
+  } catch (err) {
+     console.log(err);
+     res.status(500).json({ error: "Greska", data: err });
+  }
 });
- 
+
+route.delete("/:id", async (req, res) => {
+  try {
+     const kategorija = await Kategorija.findByPk(req.params.id);
+     if (kategorija) {
+         await kategorija.destroy();
+         return res.json({ id: kategorija.id });
+     } else {
+         return res.status(404).json({ error: "Kategorija nije pronađen" });
+     }
+ } catch (err) {
+     console.log(err);
+     res.status(500).json({ error: "Greška", data: err });
+ }
+});
 
 
 module.exports = route;

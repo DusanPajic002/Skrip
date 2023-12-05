@@ -1,49 +1,78 @@
 window.addEventListener("load", function () {
-    fetch('http://localhost:9000/kategorija/').then(Response => Response.json())
-        .then(data => {
-            for (let i = 0; i < data.length; i++) {
-                let tr = document.createElement("tr");
-                let td_id = document.createElement("td");
-                let td_naziv = document.createElement("td");
-                let td_opis = document.createElement("td");
-                let td_akcije = document.createElement("td");
-
-                tr.dataset.id = data[i].id;
-                td_id.innerHTML = data[i].id;
-                td_naziv.innerHTML = data[i].naziv;
-                td_opis.innerHTML = data[i].opis;
-
-                tr.appendChild(td_id);
-                tr.appendChild(td_naziv);
-                tr.appendChild(td_opis);
-                tr.appendChild(td_akcije);
-                let btn = document.createElement('button');
-                btn.type = "button";
-                btn.classList.add("btn");
-                btn.innerHTML = data[i].dostupnost.naziv;
-                if(data[i].dostupnost.naziv == "Dostupno")
-                    btn.classList.add("btn-primary");
-                else
-                    btn.classList.add("btn-danger");
-                td_akcije.appendChild(btn);
-                let link = this.document.createElement('a');
-                link.setAttribute('href','kategorija.html?id=' + data[i].id);
-                link.classList.add('btn');
-                link.classList.add('btn-dark');
-                link.innerHTML = 'Izmeni';
-                td_akcije.appendChild(link);
-                tr.appendChild(td_akcije);
-                document.getElementById("spisak").appendChild(tr);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
+    const queryParams = new URLSearchParams(window.location.search);
+    const id = queryParams.get('id');
+    
+    if (id) {
+        fetch(`http://localhost:9000/kategorija/${id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("id").textContent = data.id;
+                document.getElementById("naziv").textContent = data.naziv;
+                document.getElementById("opis").textContent = data.opis;
+                const selectElement = document.querySelector('.form-select');
+                selectElement.value = data.dostupnost_id; 
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    } else {
+        console.error('Nije pronadjen.');
+    }
 });
 
+document.getElementById('primeni').addEventListener('click',async function(event) {
+    event.preventDefault();
 
+    const id = new URLSearchParams(window.location.search).get('id');
+    let sel = document.getElementById('dostupnost');
+    let selectedValue = sel.options[sel.selectedIndex].innerText;
 
+    const dostupnost = await fetch(`http://localhost:9000/dostupnost/`, {
+            method: "GET",
+            headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await dostupnost.json();
+    let dostupnostID = -1;
+    for (let i = 0; i < data.length; i++) 
+        if (data[i].naziv === selectedValue)
+            dostupnostID = data[i].id;
+    if(dostupnostID == -1)
+        return;
 
+    const dataToSend = {
+        id: id,
+        dostupnost_id: dostupnostID
+    };
+    fetch(`http://localhost:9000/kategorija/dostupnost/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSend)
+    })
+    .then(response => response.json())
+    .catch(err => {
+        alert("Desila se greska");
+    });
+});
 
-
+document.getElementById('obrisiBtn').addEventListener('click', function() {
+    let url = new URL(window.location.href);
+    id = url.searchParams.get("id");
+    if (confirm("Da li ste sigurni da želite da obrišete ovaj suplement?")) {
+        fetch(`http://localhost:9000/kategorija/${id}`, {
+            method: 'DELETE'
+        })
+      .then(response => response.json())
+      .then(data => {
+       alert("Aktivnost je uspešno obrisana.");
+       window.location.href = 'kategorije.html';
+    })
+   .catch(error => {
+       console.error('Došlo je do greške:', error);
+ });
+}
+});

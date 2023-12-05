@@ -14,7 +14,6 @@ function proveriIdKategorije(id) {
     });
 
 }
-
 async function validacija(id) {
     let validno = true;
     const idZauzet = await proveriIdKategorije(id);
@@ -57,7 +56,7 @@ document.querySelector("#potvrdi").addEventListener('click',async function(event
             dostupnostID = data[i].id;
     if(dostupnostID == -1)
         return;
-    
+
     kategorija.dostupnost_id = dostupnostID;
     console.log(kategorija)
     fetch("http://localhost:9000/kategorija/", {
@@ -68,14 +67,14 @@ document.querySelector("#potvrdi").addEventListener('click',async function(event
     .then(response => response.json())
     .then(data => {
         alert("Nova kategorija."); 
-        //window.location.href = 'kategorije.html';
+        window.location.href = 'kategorije.html';
     })
     .catch(err => {
         alert("Desila se greska");
         console.log(err);
     });
-
 });
+
 
 
 
