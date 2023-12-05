@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const { sequelize, Jelo, Dostupnost, Kategorija, Sastojak, Narudzbina } = require("C:/Users/Korisnik/Desktop/Skrip/app_servis/api_servis/models");
+const { sequelize, Jelo, Dostupnost,KategorijaSastojka, Kategorija, Sastojak, Narudzbina } = require("C:/Users/Korisnik/Desktop/Skrip/app_servis/api_servis/models");
 
 const jeloRoutes = require('../routes/jelo.js');
 const kategorijaRoutes = require("../routes/kategorija.js");
