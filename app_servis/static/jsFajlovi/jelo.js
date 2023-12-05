@@ -73,28 +73,25 @@ document.querySelector("#sacuvaj").addEventListener('click', function(event) {
     };
 
     let sel = document.getElementById('kategorija');
-    let selectedValue = sel.options[sel.selectedIndex].value; 
+    let selectedValue = sel.options[sel.selectedIndex].innerText; 
     fetch('http://localhost:9000/kategorija/')
     .then(response => response.json())
     .then(kategorije => {
-        let indeks = -1; // Definišemo indeks ovde
+        let indeks = -1;
 
         for(let i=0; i<kategorije.length; i++){
-            console.log(kategorije[i].naziv);
-            console.log(sel[selectedValue-1].innerText);
-          if(kategorije[i].naziv == sel[selectedValue-1].innerText)
+          if(kategorije[i].naziv == selectedValue)
             indeks = i;
         }
-
-            if (indeks !== -1) {
-                izmeniJelo.kategorija_id = kategorije[indeks].id;
-                return fetch(`http://localhost:9000/jelo/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(izmeniJelo),
-                });
+        if (indeks !== -1) {
+            izmeniJelo.kategorija_id = kategorije[indeks].id;
+            return fetch(`http://localhost:9000/jelo/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(izmeniJelo),
+        });
         } else {
             throw new Error('Kategorija nije pronađena.');
         }
