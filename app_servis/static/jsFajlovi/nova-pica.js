@@ -32,7 +32,7 @@ document.getElementById("forma").addEventListener("submit", function(event){
       
         for(let i=0; i<kategorije.length; i++)
           if(kategorije[i].naziv == selectedValue){
-            indeks = i;
+            indeks = i;//d
             break;
           }
         if (indeks == -1)
