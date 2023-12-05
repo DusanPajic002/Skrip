@@ -29,7 +29,6 @@ window.addEventListener("load", function () {
             btn.onclick = function () {
                 let kolicinaN = prompt("Unesi novu cenu:");
                 let id = this.parentNode.parentNode.dataset.id
-                console.log(id);
                 if (kolicinaN !== null) {
                     fetch("http://localhost:9000/sastojak/promeni-kolicinu/" + id, {
                         method: 'PUT',
@@ -48,7 +47,35 @@ window.addEventListener("load", function () {
                 }
             };
             td_akcije.appendChild(btn);
+            
+            let link = this.document.createElement('a');
+            link.setAttribute('href','sastojak.html?id=' + sastojci[i].id);
+            link.classList.add('btn');
+            link.classList.add('btn-danger');
+            link.innerHTML = 'Obrisi';
 
+            let btnObrisi = document.createElement('button');
+            btnObrisi.type = "button";
+            btnObrisi.classList.add("btn");
+            btnObrisi.classList.add("btn-danger");
+            btnObrisi.innerHTML = "Obrisi";
+            btnObrisi.onclick = function () {
+                let id = sastojci[i].id;
+                if (confirm("Da li ste sigurni da želite da obrišete ovaj suplement?"))
+                    fetch(`http://localhost:9000/sastojak/${id}`, {
+                        method: 'DELETE'
+                        })
+                    .then(response => response.json())
+                    .then(data => {
+                    alert("Aktivnost je uspešno obrisana.");
+                        window.location.href = 'sastojak.html';
+                    })
+                    .catch(error => {
+                        console.error('Došlo je do greške:', error);
+                    });
+            }
+
+            td_akcije.appendChild(btnObrisi);
             if(sastojci[i].kategorijasastojka.naziv != null)
                 document.getElementById(sastojci[i].kategorijasastojka.naziv).appendChild(tr);
             else
@@ -59,8 +86,6 @@ window.addEventListener("load", function () {
         console.error('Error:', error);
     });
 });
-
-
 
 
 

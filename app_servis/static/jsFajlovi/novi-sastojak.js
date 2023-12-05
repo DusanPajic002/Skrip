@@ -29,48 +29,41 @@ window.addEventListener("load", function () {
     .catch(err => console.log(err));
 });
 
-// document.querySelector("#potvrdi").addEventListener('click',async function(event) {
-//     event.preventDefault();  
-//     var validno = validacija();   
-//     if(!validno){ return; }
+document.getElementById("potvrdi").addEventListener('click', function(event) {
+    event.preventDefault();  
+    var validno = validacija();   
+    if(!validno){ return; }
+    var sastojak = {};
+    sastojak.naziv = document.getElementById("naziv").value; 
+    sastojak.kolicina = document.getElementById("kolicina").value;
 
-//     let kategorija = {};
-//     kategorija.id = id
-//     kategorija.naziv = document.getElementById("naziv").value;
-//     kategorija.opis = document.getElementById("opis").value;
+    let sel = document.getElementById('kategorijasastojka');
+    let selectedValue = sel.options[sel.selectedIndex].innerText; 
 
-//     let sel = document.getElementById('dostupnost');
-//     let selectedValue = sel.options[sel.selectedIndex].innerText;
+    fetch("http://localhost:9000/kategorijasastojka/")
+    .then(succ=>succ.json())
+    .then(kategorijasastojka => {
+        let indeks = -1;
+        for(let i=0; i<kategorijasastojka.length; i++)
+          if(kategorijasastojka[i].naziv == selectedValue){
+            indeks = i;
+            break;
+          }
+        if (indeks == -1)
+            throw new Error('Kategorija nije pronađena.');
 
-//     const dostupnost = await fetch(`http://localhost:9000/dostupnost/`, {
-//             method: "GET",
-//             headers: { 'Content-Type': 'application/json' }
-//     });
-//     const data = await dostupnost.json();
-//     let dostupnostID = -1;
-//     for (let i = 0; i < data.length; i++) 
-//         if (data[i].naziv === selectedValue)
-//             dostupnostID = data[i].id;
-//     if(dostupnostID == -1)
-//         return;
+        sastojak.kategorijasastojka_id = kategorijasastojka[indeks].id
+        return fetch("http://localhost:9000/sastojak/novi-sastojak", {
+          method:"POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sastojak)
+        });
 
-//     kategorija.dostupnost_id = dostupnostID;
-//     console.log(kategorija)
-//     fetch("http://localhost:9000/kategorija/", {
-//         method:"POST",
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(kategorija)
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         alert("Nova kategorija."); 
-//         window.location.href = 'kategorije.html';
-//     })
-//     .catch(err => {
-//         alert("Desila se greska");
-//         console.log(err);
-//     });
-// });
+    }).then(data=>{
+        window.location.href=`/sastojci.html`;
+    })
+    .catch(err => console.log(err));
+});
 
 
 

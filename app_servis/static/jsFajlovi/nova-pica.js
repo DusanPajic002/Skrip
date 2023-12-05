@@ -29,11 +29,13 @@ window.addEventListener("load", function () {
   })
   .catch(err => console.log(err));
 });
-
 document.getElementById("forma").addEventListener("submit", function(event){
     event.preventDefault();  
     var validno = validacija();   
     if(!validno){ return; }
+
+    
+
     var pica = {};
     pica.naziv = document.getElementById("naziv").value; 
     pica.cena = document.getElementById("cena").value;
