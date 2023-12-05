@@ -60,6 +60,20 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(err=>console.log(err));
 
+    fetch("http://localhost:9000/kategorija/")
+    .then(resp => resp.json())
+    .then(kategorije => {
+        const dostupneKategorije = kategorije.filter(kat => kat.dostupnost.id === 1);
+        const padajuciMeni = document.getElementById("kategorija");
+        dostupneKategorije.forEach(kat => {
+            let opcija = document.createElement("option");
+            opcija.value = kat.id;
+            opcija.text = kat.naziv;
+            padajuciMeni.appendChild(opcija);
+        });
+    })
+    .catch(err => console.log(err));
+
 });
 
 document.querySelector("#sacuvaj").addEventListener('click', function(event) {

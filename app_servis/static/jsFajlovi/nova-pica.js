@@ -14,6 +14,22 @@ function validacija(){
     return validno;
 }
 
+window.addEventListener("load", function () {
+  fetch("http://localhost:9000/kategorija/")
+  .then(resp => resp.json())
+  .then(kategorije => {
+      const dostupneKategorije = kategorije.filter(kat => kat.dostupnost.id === 1);
+      const padajuciMeni = document.getElementById('kategorija');
+      dostupneKategorije.forEach(kat => {
+          let opcija = document.createElement("option");
+          opcija.value = kat.id;
+          opcija.text = kat.naziv;
+          padajuciMeni.appendChild(opcija);
+      });
+  })
+  .catch(err => console.log(err));
+});
+
 document.getElementById("forma").addEventListener("submit", function(event){
     event.preventDefault();  
     var validno = validacija();   
@@ -32,7 +48,7 @@ document.getElementById("forma").addEventListener("submit", function(event){
       
         for(let i=0; i<kategorije.length; i++)
           if(kategorije[i].naziv == selectedValue){
-            indeks = i;//d
+            indeks = i;
             break;
           }
         if (indeks == -1)
