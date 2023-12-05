@@ -53,7 +53,19 @@ route.put("/:id", async (req, res) => {
           res.status(500).json({ error: "Greška", data: err });
      }
 });
- 
+
+route.put("/promeni-kolicinu/:id", async (req, res) => {
+     try {
+        const sastojak = await Sastojak.findByPk(req.params.id);
+        sastojak.kolicina = req.body.kolicina;
+        await sastojak.save();
+        return res.json(sastojak);
+     } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Greska", data: err });
+     }
+ });
+
 route.delete("/:id", async (req, res) => {
      try {
        const sastojak = await Sastojak.findByPk(req.params.id);
