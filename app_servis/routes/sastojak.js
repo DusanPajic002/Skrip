@@ -1,58 +1,65 @@
 const express = require("express");
 const route = express.Router();
+const { sequelize, Jelo, Dostupnost, Kategorija, Sastojak, Narudzbina } = require("C:/Users/Korisnik/Desktop/Skrip/app_servis/api_servis/models");
 
 route.use(express.json());
-route.use(express.urlencoded({extended:true}));
-module.exports = route;
+route.use(express.urlencoded({ extended: true }));
 
 route.get("/", async (req, res) => {
-    try{
-         return res.json("sva jela");
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
- 
- route.get("/:id", async (req, res) => {
-    try{
-         return res.json("jelo čiji je id=" + req.params.id);
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
- 
- 
- route.post("/", async (req, res) => {
-    try{
-         return res.json("unos novog jela čiji su podaci  u req.body");
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+     try {
+          const sastojci = await Sastojak.findAll();
+          return res.json(sastojci);
+     } catch (err) {
+          console.log(err);
+          res.status(500).json({ error: "Greška", data: err });
+     }
+});
+
+route.get("/:id", async (req, res) => {
+     try {
+          const sastojak = await Sastojak.findByPk(req.params.id);
+          return res.json(sastojak);
+     } catch (err) {
+          console.log(err);
+          res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
  
- route.put("/:id", async (req, res) => {
-    try{
-         return res.json("izmena podataka jela čiji je id=" +  eq.params.id + " a podaci su u req.body");
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+route.post("/", async (req, res) => {
+     try {
+       const noviSastojak = await Sastojak.create(req.body);
+       return res.json(noviSastojak);
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
+route.put("/:id", async (req, res) => {
+     try {
+          const sastojak = await Sastojak.findByPk(req.params.id);
+          sastojak.naziv = req.body.naziv;
+          await sastojak.save();
+          return res.json(sastojak);
+     } catch (err) {
+          console.log(err);
+          res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
- route.delete("/:id", async (req, res) => {
-    try{
-         return res.json(req.params.id);  //id obrisanog
-    }catch(err){
-         console.log(err);
-         res.status(500).json({ error: "Greska", data: err });
-    }
- });
+route.delete("/:id", async (req, res) => {
+     try {
+       const sastojak = await Sastojak.findByPk(req.params.id);
+       await sastojak.destroy();
+       return res.json({ id: sastojak.id }); // Vraća ID obrisane sastojka
+     } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Greška", data: err });
+     }
+});
  
 
 
 
+module.exports = route;

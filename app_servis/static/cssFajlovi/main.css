@@ -1,0 +1,69 @@
+head{
+    background-color: rgb(233, 200, 129);
+}
+body {
+    background-color: rgba(231, 198, 137, 0.644);
+    background: url("../slike/123.jpg");
+}
+main.container {
+    background-color:       rgba(236, 209, 150, 0.966);
+    box-shadow: 0px 0px 40px black;
+    border: 0px solid black;
+    margin-top: 80px;
+    width: 3000px;
+    height:1100px;
+}
+#sastojcirow{
+    background-color: rgba(245, 179, 179, 0.507);
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#narudzbinaFroma{
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 6px;
+    height: 200px;
+}
+
+#tabele{
+    margin-top:  10px;
+    margin-bottom: 50px;
+    padding: 60px;
+}
+main h1{
+    background-color: rgba(0, 50, 104, 0.048);
+    margin-top:  5px;
+    padding: 0px;
+    font-size:xx-large;
+}
+#Sosevi{
+ font-size:x-large;
+ font-weight: bold;
+}
+#novojelodugme{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+#glavniRow{
+    background-color: rgb(233, 200, 129);
+    font-weight: bold;
+}
+.error {
+    border-color: red;
+}
+
+.success {
+    border-color: green;
+}
+#tabela_narucivanje{
+    text-align: center;
+    width: 100%;
+    border-color: rgb(70, 110, 70);
+    border: 1px solid;
+    margin-bottom: 20px;
+}
