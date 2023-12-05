@@ -15,7 +15,16 @@ module.exports = {
       opis: {
         type: Sequelize.TEXT,
         allowNull: true
-      } 
+      },
+      dostupnost_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Dostupnosts', 
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      }
     });
   },
   async down(queryInterface, Sequelize) {

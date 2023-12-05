@@ -4,8 +4,9 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Kategorija extends Model {
-    static associate({Jelo}) {
+    static associate({Jelo, Dostupnost}) {
       this.hasMany(Jelo, {foreignKey: "kategorija_id" ,as:"kategorija"});
+      this.belongsTo(Dostupnost, {foreignKey: "dostupnost_id" ,as:"dostupnost"});
     }
   }
   Kategorija.init({
@@ -17,7 +18,11 @@ module.exports = (sequelize, DataTypes) => {
     opis: {
       type: DataTypes.TEXT,
       allowNull: true
-    } 
+    },
+    dostupnost_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Kategorija',

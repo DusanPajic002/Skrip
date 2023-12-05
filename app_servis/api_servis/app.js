@@ -2,12 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const { sequelize, Jelo, Kategorija, Sastojak, Narudzbina } = require("./models");
+const { sequelize, Jelo, Dostupnost, Kategorija, Sastojak, Narudzbina } = require("C:/Users/Korisnik/Desktop/Skrip/app_servis/api_servis/models");
 
 const jeloRoutes = require('../routes/jelo.js');
 const kategorijaRoutes = require("../routes/kategorija.js");
 const narudzbinaRoutes = require("../routes/narudzbina.js");
 const sastojakRoutes = require("../routes/sastojak.js");
+const dostupnostRoutes = require("../routes/dostupnost.js");
 
 
 const corsOptions = {
@@ -21,6 +22,7 @@ app.use("/jelo", jeloRoutes);
 app.use("/kategorija", kategorijaRoutes);
 app.use("/narudzbina", narudzbinaRoutes);
 app.use("/sastojak", sastojakRoutes);
+app.use("/dostupnost", dostupnostRoutes);
 
 app.listen({ port:9000 }, async () => {
 	console.log("Started server on localhost:9000");

@@ -1,7 +1,6 @@
 window.addEventListener("load", function () {
     fetch('http://localhost:9000/jelo/').then(Response => Response.json())
         .then(data => {
-            console.log(data);
 
             for (let i = 0; i < data.length; i++) {
                 let tr = document.createElement("tr");

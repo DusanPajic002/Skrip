@@ -44,7 +44,22 @@ document.querySelector("#potvrdi").addEventListener('click',async function(event
     kategorija.opis = document.getElementById("opis").value;
 
     let sel = document.getElementById('dostupnost');
-    let selectedValue = sel.options[sel.selectedIndex].value;
+    let selectedValue = sel.options[sel.selectedIndex].innerText;
+
+    const dostupnost = await fetch(`http://localhost:9000/dostupnost/`, {
+            method: "GET",
+            headers: { 'Content-Type': 'application/json' }
+    });
+    const data = await dostupnost.json();
+    let dostupnostID = -1;
+    for (let i = 0; i < data.length; i++) 
+        if (data[i].naziv === selectedValue)
+            dostupnostID = data[i].id;
+    if(dostupnostID == -1)
+        return;
+    
+    kategorija.dostupnost_id = dostupnostID;
+    console.log(kategorija)
     fetch("http://localhost:9000/kategorija/", {
         method:"POST",
         headers: { 'Content-Type': 'application/json' },

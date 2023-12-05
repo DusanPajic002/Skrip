@@ -1,7 +1,5 @@
 'use strict';
 
-const Narudzbina = require('../models/3narudzbina');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
